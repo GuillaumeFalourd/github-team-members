@@ -6,8 +6,6 @@
 
 _Observation: This action can also be used to check if the `${{ github.actor }}` belongs a specified team._
 
-* * *
-
 ## 📚 Usage
 
 ### ⚠️ Requirements
