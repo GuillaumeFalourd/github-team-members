@@ -4,7 +4,7 @@
 
 ☞ Github Actions to get a GitHub Team Members list :octocat:
 
-_Observation: This action can also be used to check if the `${{ github.actor }}` belongs a specified team._
+_Observation: This action can also be used to check if the workflow `${{ github.actor }}` belongs to the specified team._
 
 ## 📚 Usage
 
