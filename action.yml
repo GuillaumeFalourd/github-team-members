@@ -1,0 +1,63 @@
+name: GitHub Team Members
+
+description: 'Github Actions to get Github Team Members :octocat:'
+
+branding:
+  icon: 'users'  
+  color: 'blue'
+
+inputs:
+  org_slug:
+    description: Organization's name
+    required: true
+    default: ${{ github.repository_owner }}
+  team_slug:
+    description: Team's Slug
+    required: true
+  role:
+    description: Member's Role (member, maintainer or all)
+    required: false
+    default: all
+  token: 
+    description: GitHub token
+    required: true
+    default: ${{ github.token }}
+
+outputs:
+  data:
+    description: Raw member data from GitHub API
+    value: ${{ steps.get-members.outputs.data }}
+  members:
+    description: Team members list
+    value: ${{ steps.members.outputs.members }}
+  actor-belongs-team:
+    description: If the workflow github.actor belongs to the team
+    value: ${{ steps.actor.outputs.belongs-team }}
+
+runs:
+  using: composite
+  steps:
+    - id: get-members
+      run: echo "data=$(gh api --paginate -X GET /orgs/$ORG_SLUG/teams/$TEAM_SLUG/members\?role=$ROLE | jq 'reduce inputs as $i (.; . += $i)')" >> $GITHUB_OUTPUT
+      shell: bash
+      env:
+        ORG_SLUG: ${{ inputs.org_slug }}
+        TEAM_SLUG: ${{ inputs.team_slug }}
+        ROLE: ${{ inputs.role }}
+        GH_TOKEN: ${{ inputs.token }}
+    
+    - id: members
+      run: echo "members=${{ join(fromJson(steps.get-members.outputs.data).*.login) }}'" >> $GITHUB_OUTPUT
+      shell: bash
+
+    - id: actor
+      run: |       
+          members=${{ steps.members.outputs.members }}
+          actor=${{ github.actor }}
+          if [[ $members == *"$actor"* ]];
+          then
+              echo "belongs-team=true" >> $GITHUB_OUTPUT
+          else
+              echo "belongs-team=false" >> $GITHUB_OUTPUT
+          fi
+      shell: bash
