@@ -63,7 +63,7 @@ Field | Mandatory | Default Value | Observation
 **org_slug** | NO | - | Organization's name <br/> _e.g: `my-org`_
 **team_slug** | NO | - | Team's Slug <br/> _e.g: `my-team`_
 **role** | NO | `all` | Members Role <br/> _e.g: `member`, `maintainer` or `all`_
-**token** | NO | `${{ github.token }}` | [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) is necessary if fetch team members.
+**token** | NO | `${{ github.token }}` | [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) to read org team.
 
 ## ▶️ Action Outputs
 
