@@ -12,7 +12,7 @@ _Observation: This action can also be used to check if the workflow `${{ github.
 
 ### ⚠️ Requirements
 
-This action needs a GitHub token with the `read:org` permission to read organizational team members.
+This action needs a GitHub Token or [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with the `read:org` permission to read organizational team members.
 
 ### Fetch all members from Team Slug
 
