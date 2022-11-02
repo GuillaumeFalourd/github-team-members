@@ -1,6 +1,6 @@
 name: GitHub Team Members
 
-description: 'Github Actions to get Github Team Members :octocat:'
+description: 'GitHub Actions to get GitHub Team Members :octocat:'
 
 branding:
   icon: 'users'  
@@ -31,7 +31,7 @@ outputs:
     description: Team members list
     value: ${{ steps.members.outputs.members }}
   actor-belongs-team:
-    description: If the workflow github.actor belongs to the team
+    description: If the workflow ${{ github.actor }} belongs to the team
     value: ${{ steps.actor.outputs.belongs-team }}
 
 runs:
