@@ -2,11 +2,13 @@
 
 [![Security Pipeline](https://github.com/GuillaumeFalourd/github-team-members/actions/workflows/security-pipeline.yml/badge.svg)](https://github.com/GuillaumeFalourd/github-team-members/actions/workflows/security-pipeline.yml) [![Super Linter](https://github.com/GuillaumeFalourd/github-team-members/actions/workflows/super-linter.yml/badge.svg)](https://github.com/GuillaumeFalourd/github-team-members/actions/workflows/super-linter.yml) [![Gitleaks](https://github.com/GuillaumeFalourd/github-team-members/actions/workflows/gitleaks.yml/badge.svg)](https://github.com/GuillaumeFalourd/github-team-members/actions/workflows/gitleaks.yml)
 
-☞ Github Actions to get Github Team Members, or check if the `${{ github.actor }}` belongs the specified team :octocat:
+☞ Github Actions to get a GitHub Team Members list :octocat:
+
+_Observation: This action can also be used to check if the `${{ github.actor }}` belongs a specified team._
 
 ## 📚 Usage
 
-### Permissions
+### ⚠️ Requirements
 
 This action needs a GitHub token with the `read:org` permission to read organizational team members.
 
@@ -16,7 +18,7 @@ Field | Mandatory | Default Value | Observation
 ------------ | ------------  | ------------- | -------------
 **org_slug** | NO | - | Organization's name <br/> _e.g: `my-org`_
 **team_slug** | NO | - | Team's Slug <br/> _e.g: `my-team`_
-**role** | NO | `all` | Members Role (member, maintainer or all)
+**role** | NO | `all` | Members Role <br/> _e.g: `member`, `maintainer` or `all`_
 **token** | NO | `${{ github.token }}` | Branch to push the changes back
 
 ### ▶️ Action Outputs
