@@ -6,34 +6,17 @@
 
 _Observation: This action can also be used to check if the `${{ github.actor }}` belongs a specified team._
 
+* * *
+
 ## 📚 Usage
 
 ### ⚠️ Requirements
 
 This action needs a GitHub token with the `read:org` permission to read organizational team members.
 
-### ▶️ Action Inputs
-
-Field | Mandatory | Default Value | Observation
------------- | ------------  | ------------- | -------------
-**org_slug** | NO | - | Organization's name <br/> _e.g: `my-org`_
-**team_slug** | NO | - | Team's Slug <br/> _e.g: `my-team`_
-**role** | NO | `all` | Members Role <br/> _e.g: `member`, `maintainer` or `all`_
-**token** | NO | `${{ github.token }}` | Branch to push the changes back
-
-### ▶️ Action Outputs
-
-Field | Observation
------------- | ------------ 
-**data** | Raw member data from GitHub API
-**members** | Team members list
-**actor-belongs-team** | If the workflow `${{ github.actor }}` belongs to the team. <br/> _e.g: `true` or `false`_
-
-## 🧑‍💻 Examples
-
 ### Fetch all members from Team Slug
 
-```
+```yaml
 - id: get-members
   uses: GuillaumeFalourd/github-team-members@v1
   with:
@@ -47,7 +30,7 @@ Field | Observation
 
 ### Fetch maintainers from Team Slug
 
-```
+```yaml
 - id: get-members
   uses: GuillaumeFalourd/github-team-members@v1
   with:
@@ -62,7 +45,7 @@ Field | Observation
 
 ### Check if github.actor belongs to Team Slug
 
-```
+```yaml
 - id: get-members
   uses: GuillaumeFalourd/github-team-members@v1
   with:
@@ -74,6 +57,23 @@ Field | Observation
   run: echo "${{ github.actor }} belongs to Team"
   shell: bash
 ```
+
+## ▶️ Action Inputs
+
+Field | Mandatory | Default Value | Observation
+------------ | ------------  | ------------- | -------------
+**org_slug** | NO | - | Organization's name <br/> _e.g: `my-org`_
+**team_slug** | NO | - | Team's Slug <br/> _e.g: `my-team`_
+**role** | NO | `all` | Members Role <br/> _e.g: `member`, `maintainer` or `all`_
+**token** | NO | `${{ github.token }}` | Branch to push the changes back
+
+## ▶️ Action Outputs
+
+Field | Observation
+------------ | ------------ 
+**data** | Raw member data from GitHub API
+**members** | Team members list
+**actor-belongs-team** | If the workflow `${{ github.actor }}` belongs to the team. <br/> _e.g: `true` or `false`_
 
 ## 🤝 Contributing
 
