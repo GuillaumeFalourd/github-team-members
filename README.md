@@ -1,6 +1,8 @@
 # GitHub Team Members
 
+<!-- markdownlint-disable MD009 MD013 -->
 [![Security Pipeline](https://github.com/GuillaumeFalourd/github-team-members/actions/workflows/security-pipeline.yml/badge.svg)](https://github.com/GuillaumeFalourd/github-team-members/actions/workflows/security-pipeline.yml) [![Super Linter](https://github.com/GuillaumeFalourd/github-team-members/actions/workflows/super-linter.yml/badge.svg)](https://github.com/GuillaumeFalourd/github-team-members/actions/workflows/super-linter.yml) [![Gitleaks](https://github.com/GuillaumeFalourd/github-team-members/actions/workflows/gitleaks.yml/badge.svg)](https://github.com/GuillaumeFalourd/github-team-members/actions/workflows/gitleaks.yml)
+<!-- markdownlint-enable MD009 MD013 -->
 
 ☞ GitHub Actions to get a GitHub Team Members list :octocat:
 
@@ -68,7 +70,7 @@ Field | Mandatory | Default Value | Observation
 ## ▶️ Action Outputs
 
 Field | Observation
------------- | ------------ 
+------------ | ------------
 **data** | Raw member data from GitHub API
 **members** | Team members list
 **actor-belongs-team** | If the workflow `${{ github.actor }}` belongs to the team. <br/> _e.g: `true` or `false`_
