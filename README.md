@@ -56,6 +56,10 @@ This action needs a GitHub token with the `read:org` permission to read organiza
 - if: steps.get-members.outputs.actor-belongs-team == 'true'
   run: echo "${{ github.actor }} belongs to Team"
   shell: bash
+  
+- if: steps.get-members.outputs.actor-belongs-team == 'false'
+  run: echo "${{ github.actor }} doesn't belong to Team"
+  shell: bash
 ```
 
 ## ▶️ Action Inputs
