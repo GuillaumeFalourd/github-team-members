@@ -12,7 +12,7 @@ _Observation: This action can also be used to check if the workflow `${{ github.
 
 ### ⚠️ Requirements
 
-This action needs a GitHub token with the `read:org` permission to read organizational team members.
+This action needs a GitHub Token or [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with the `read:org` permission to read organizational team members.
 
 ### Fetch all members from Team Slug
 
@@ -55,6 +55,10 @@ This action needs a GitHub token with the `read:org` permission to read organiza
 
 - if: steps.get-members.outputs.actor-belongs-team == 'true'
   run: echo "${{ github.actor }} belongs to Team"
+  shell: bash
+  
+- if: steps.get-members.outputs.actor-belongs-team == 'false'
+  run: echo "${{ github.actor }} doesn't belong to Team"
   shell: bash
 ```
 
