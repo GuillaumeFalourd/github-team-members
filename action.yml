@@ -15,7 +15,7 @@ inputs:
     description: Team's Slug
     required: true
   role:
-    description: Member's Role (member, maintainer or all)
+    description: Members Role (member, maintainer or all)
     required: false
     default: all
   token: 
