@@ -10,7 +10,7 @@ inputs:
   org_slug:
     description: Organization's name
     required: true
-    default: ${{ github.repository_owner }}
+    default: '${{ github.repository_owner }}'
   team_slug:
     description: Team's Slug
     required: true
@@ -21,7 +21,7 @@ inputs:
   token: 
     description: GitHub token
     required: true
-    default: ${{ github.token }}
+    default: '${{ github.token }}'
 
 outputs:
   data:
@@ -31,7 +31,7 @@ outputs:
     description: Team members list
     value: ${{ steps.members.outputs.members }}
   actor-belongs-team:
-    description: If the workflow ${{ github.actor }} belongs to the team
+    description: If the workflow `github.actor` belongs to the team
     value: ${{ steps.actor.outputs.belongs-team }}
 
 runs:
