@@ -38,7 +38,7 @@ runs:
   using: composite
   steps:
     - id: get-members
-      run: echo "data=$(gh api --paginate -X GET /orgs/$ORG_SLUG/teams/$TEAM_SLUG/members\?role=$ROLE | jq 'reduce inputs as $i (.; . += $i)')" >> $GITHUB_OUTPUT
+      run: echo "data=$(gh api --paginate -X GET /orgs/$ORG_SLUG/teams/$TEAM_SLUG/members?role=$ROLE)" >> $GITHUB_OUTPUT
       shell: bash
       env:
         ORG_SLUG: ${{ inputs.org_slug }}
@@ -51,13 +51,10 @@ runs:
       shell: bash
 
     - id: actor
-      run: |       
-          members=${{ steps.members.outputs.members }}
-          actor=${{ github.actor }}
-          if [[ $members == *"$actor"* ]];
-          then
-              echo "belongs-team=true" >> $GITHUB_OUTPUT
-          else
-              echo "belongs-team=false" >> $GITHUB_OUTPUT
-          fi
+      run: echo "belongs-team=$(gh api --paginate "/orgs/$ORG_SLUG/teams/$TEAM_SLUG/members?role=$ROLE" | jq -e 'any(.login == "${{ github.actor }}")')" >> $GITHUB_OUTPUT
       shell: bash
+      env:
+        ORG_SLUG: ${{ inputs.org_slug }}
+        TEAM_SLUG: ${{ inputs.team_slug }}
+        ROLE: ${{ inputs.role }}
+        GH_TOKEN: ${{ inputs.token }}
